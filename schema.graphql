@@ -1,0 +1,106 @@
+type Token @entity {
+    # token address
+    id: ID!
+    # token symbol
+    symbol: String!
+    # token name
+    name: String!
+    # token decimals
+    decimals: BigInt!
+}
+
+type Pair @entity {
+    # pair address
+    id: ID!
+
+    token0: Token!
+    token1: Token!
+    balance0: BigDecimal!
+    balance1: BigDecimal!
+    fee: BigInt!
+    vFee: BigInt!
+    maxReserveRatio: BigInt!
+    reserveRatio: BigInt!
+    totalSupply: BigDecimal!
+    blocksDelay: BigInt!
+    totalMu: BigDecimal!
+    totalStaked: BigDecimal!
+    lastSwapBlock: BigInt!
+    lastSwapTimestamp: BigInt!
+    whitelist: [PairWhitelist!]! @derivedFrom(field: "pair")
+    # allocation points
+    allocationPoints: BigInt!
+
+    # token0 per token1
+    token0Price: BigDecimal!
+    # token1 per token0
+    token1Price: BigDecimal!
+
+    pairReserves: [PairReserve!]! @derivedFrom(field: "pair")
+
+    # creation
+    createdAtTimestamp: BigInt!
+    createdAtBlockNumber: BigInt!
+}
+
+type User @entity {
+    id: ID!
+    vrswLockedPositionsNumber: BigInt!
+    liquidityPositions: [LiquidityPosition!] @derivedFrom(field: "user")
+    lpStakingPositions: [LpStakingPosition!] @derivedFrom(field: "user")
+    vrswStakingPositions: [VrswStakingPosition!] @derivedFrom(field: "user")
+}
+
+type LiquidityPosition @entity {
+    id: ID!
+    user: User!
+    pair: Pair!
+    liquidityTokenBalance: BigDecimal!
+}
+
+type PairWhitelist @entity {
+    # pair.id + "_" + token.id
+    id: ID!
+    token: Token!
+    pair: Pair!
+}
+
+type PairReserve @entity {
+    # pair.id + "_" + token.id
+    id: ID!
+    pair: Pair!
+    token: Token!
+    balance: BigDecimal!
+    baseValue: BigDecimal!
+}
+
+type TokenomicsParams @entity {
+    id: ID!
+    alpha: BigDecimal!
+    beta: BigDecimal!
+    gamma: BigDecimal!
+    b: BigDecimal!
+    r: BigDecimal!
+    lpShare: BigDecimal!
+    lpShareFactor: BigDecimal!
+}
+
+type LpStakingPosition @entity {
+    # user.id + '_' + pair.id
+    id: ID!
+    user: User!
+    pair: Pair!
+    amount: BigDecimal!
+    mu: BigDecimal!
+}
+
+type VrswStakingPosition @entity {
+    # user.id + '_' + position number
+    id: ID!
+    user: User!
+    amount: BigDecimal!
+    lockDue: BigInt!
+    discountFactor: BigDecimal!
+    timestamp: BigInt!
+    mu: BigDecimal!
+}

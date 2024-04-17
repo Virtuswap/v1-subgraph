@@ -1,0 +1,143 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: vPairFactory
+    network: matic
+    source:
+      abi: vPairFactory
+      address: "0xd4E3668A9C39ebB603f02A6987fC915dBC906B43"
+      startBlock: 47486653
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: vPairFactory
+          file: ./abis/vPairFactory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(address,address,address,address,uint16,uint16,uint256)
+          handler: handlePairCreated
+      file: ./src/mappings/factory.ts
+  - kind: ethereum
+    name: VStaker
+    network: matic
+    source:
+      abi: VStaker
+      address: "0x9C58a2B79cd054442D5970b925637B9E88E7ecc2"
+      startBlock: 47490585
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Pair
+      abis:
+        - name: VStaker
+          file: ./abis/VStaker.json
+      eventHandlers:
+        - event: LockStakedVrsw(indexed address,uint256,uint128,uint128,uint256)
+          handler: handleLockStakedVrsw
+        - event: LockVrsw(indexed address,uint256,uint128,uint128,uint256)
+          handler: handleLockVrsw
+        - event: MuChanged(indexed address,indexed address,uint256,uint256)
+          handler: handleMuChanged
+        - event: StakeLp(indexed address,indexed address,uint256)
+          handler: handleStakeLp
+        - event: StakeVrsw(indexed address,uint256,uint128,uint256)
+          handler: handleStakeVrsw
+        - event: UnlockVrsw(indexed address,uint256)
+          handler: handleUnlockVrsw
+        - event: UnstakeLp(indexed address,indexed address,uint256)
+          handler: handleUnstakeLp
+        - event: UnstakeVrsw(indexed address,uint256)
+          handler: handleUnstakeVrsw
+      file: ./src/mappings/tokenomics.ts
+  - kind: ethereum
+    name: VChainMinter
+    network: matic
+    source:
+      abi: VChainMinter
+      address: "0xd0e91218B19c3010B535164560DB151dE696b9A8"
+      startBlock: 47490581
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Pair
+      abis:
+        - name: VChainMinter
+          file: ./abis/VChainMinter.json
+      eventHandlers:
+        - event: AllocationPointsChanged(address[],uint256[])
+          handler: handleAllocationPointsChanged
+      file: ./src/mappings/tokenomics.ts
+  - kind: ethereum
+    name: VTokenomicsParams
+    network: matic
+    source:
+      abi: VTokenomicsParams
+      address: "0x8B8f5b6872A31cc3aE1a3fD12d67e4851793f405"
+      startBlock: 47416224
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TokenomicsParams
+      abis:
+        - name: VTokenomicsParams
+          file: ./abis/VTokenomicsParams.json
+      eventHandlers:
+        - event: UpdateLpBaseRewardsShare(int256,int256)
+          handler: handleUpdateLpBaseRewardsShare
+        - event: UpdateTokenomicsParams(int256,int256,int256,int256,int256)
+          handler: handleUpdateTokenomicsParams
+      file: ./src/mappings/tokenomics.ts
+templates:
+  - kind: ethereum
+    name: vPair
+    network: matic
+    source:
+      abi: vPair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: vPair
+          file: ./abis/vPair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: AllowListChanged(address[])
+          handler: handleAllowListChanged
+        - event: BlocksDelayChanged(uint256)
+          handler: handleBlocksDelayChanged
+        - event: Burn(indexed address,uint256,uint256,indexed address,uint256)
+          handler: handleBurn
+        - event: FeeChanged(uint16,uint16)
+          handler: handleFeeChanged
+        - event: Mint(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleMint
+        - event: ReserveSync(address,uint256,uint256)
+          handler: handleReserveSync
+        - event: ReserveThresholdChanged(uint256)
+          handler: handleReserveThresholdChanged
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: vSync(uint112,uint112)
+          handler: handlevSync
+      file: ./src/mappings/pair.ts

@@ -1,0 +1,197 @@
+[
+    { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "SD59x18",
+                "name": "lpBaseRewardsShare",
+                "type": "int256"
+            },
+            {
+                "indexed": false,
+                "internalType": "SD59x18",
+                "name": "lpBaseRewardsShareFactor",
+                "type": "int256"
+            }
+        ],
+        "name": "UpdateLpBaseRewardsShare",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "SD59x18",
+                "name": "r",
+                "type": "int256"
+            },
+            {
+                "indexed": false,
+                "internalType": "SD59x18",
+                "name": "b",
+                "type": "int256"
+            },
+            {
+                "indexed": false,
+                "internalType": "SD59x18",
+                "name": "alpha",
+                "type": "int256"
+            },
+            {
+                "indexed": false,
+                "internalType": "SD59x18",
+                "name": "beta",
+                "type": "int256"
+            },
+            {
+                "indexed": false,
+                "internalType": "SD59x18",
+                "name": "gamma",
+                "type": "int256"
+            }
+        ],
+        "name": "UpdateTokenomicsParams",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "alpha",
+        "outputs": [
+            { "internalType": "SD59x18", "name": "", "type": "int256" }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "b",
+        "outputs": [
+            { "internalType": "SD59x18", "name": "", "type": "int256" }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "beta",
+        "outputs": [
+            { "internalType": "SD59x18", "name": "", "type": "int256" }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "gamma",
+        "outputs": [
+            { "internalType": "SD59x18", "name": "", "type": "int256" }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "lpBaseRewardsShare",
+        "outputs": [
+            { "internalType": "SD59x18", "name": "", "type": "int256" }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "lpBaseRewardsShareFactor",
+        "outputs": [
+            { "internalType": "SD59x18", "name": "", "type": "int256" }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            { "internalType": "address", "name": "", "type": "address" }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "r",
+        "outputs": [
+            { "internalType": "SD59x18", "name": "", "type": "int256" }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            { "internalType": "address", "name": "newOwner", "type": "address" }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "SD59x18",
+                "name": "_lpBaseRewardsShare",
+                "type": "int256"
+            },
+            {
+                "internalType": "SD59x18",
+                "name": "_lpBaseRewardsShareFactor",
+                "type": "int256"
+            }
+        ],
+        "name": "updateLpBaseRewardsShare",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            { "internalType": "SD59x18", "name": "_r", "type": "int256" },
+            { "internalType": "SD59x18", "name": "_b", "type": "int256" },
+            { "internalType": "SD59x18", "name": "_alpha", "type": "int256" },
+            { "internalType": "SD59x18", "name": "_beta", "type": "int256" },
+            { "internalType": "SD59x18", "name": "_gamma", "type": "int256" }
+        ],
+        "name": "updateParams",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]

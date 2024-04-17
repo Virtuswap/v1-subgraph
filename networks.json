@@ -1,0 +1,74 @@
+{
+    "mumbai": {
+        "vPairFactory": {
+            "address": "0x639dea334d8019693748cbc3776eff02310142a3",
+            "startBlock": 44774985
+        },
+        "VTokenomicsParams": {
+            "address": "0x439eeb7F1A838179D6B03bd8f2687Cf2c996f2d8",
+            "startBlock": 44806559
+        },
+        "VChainMinter": {
+            "address": "0x86BD44e3156Dc41B1DC4e3d455F4CB03A403B35a",
+            "startBlock": 44806566
+        },
+        "VStaker": {
+            "address": "0x4aC889D6cb89e71414ee1e71FF10Ab7bB7DC1cba",
+            "startBlock": 44806569
+        }
+    },
+    "arbitrum-sepolia": {
+        "vPairFactory": {
+            "address": "0xE5CacC25A37704A39151e17eE5558E13d10FB1B0",
+            "startBlock": 10338487
+        },
+        "VTokenomicsParams": {
+            "address": "0x5889018C5aB3D1650046A9d09275fb76104b88D5",
+            "startBlock": 9134922
+        },
+        "VChainMinter": {
+            "address": "0x6CA04d6558E546CE467d963C4740dFb8e0d833Ec",
+            "startBlock": 10340876
+        },
+        "VStaker": {
+            "address": "0xE9941F4c4F7e3AE21956D062f521E194ECeacea2",
+            "startBlock": 10340885
+        }
+    },
+    "matic": {
+        "vPairFactory": {
+            "address": "0xd4E3668A9C39ebB603f02A6987fC915dBC906B43",
+            "startBlock": 47486653
+        },
+        "VTokenomicsParams": {
+            "address": "0x8B8f5b6872A31cc3aE1a3fD12d67e4851793f405",
+            "startBlock": 47416224
+        },
+        "VChainMinter": {
+            "address": "0xd0e91218B19c3010B535164560DB151dE696b9A8",
+            "startBlock": 47490581
+        },
+        "VStaker": {
+            "address": "0x9C58a2B79cd054442D5970b925637B9E88E7ecc2",
+            "startBlock": 47490585
+        }
+    },
+    "arbitrum-one": {
+        "vPairFactory": {
+            "address": "0x389DB0B69e74A816f1367aC081FdF24B5C7C2433",
+            "startBlock": 176031664
+        },
+        "VTokenomicsParams": {
+            "address": "0xc3183006825AbF6c772c0189E7B89d40829830Da",
+            "startBlock": 176032983
+        },
+        "VChainMinter": {
+            "address": "0x7768CAc95e67bbc24d2Bc580EFf9cD74e7340701",
+            "startBlock": 176037689
+        },
+        "VStaker": {
+            "address": "0x68748818983CD5B4cD569E92634b8505CFc41FE8",
+            "startBlock": 176037709
+        }
+    }
+}
