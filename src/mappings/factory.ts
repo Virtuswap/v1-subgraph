@@ -1,9 +1,10 @@
 import { PairCreated as PairCreatedEvent } from '../../generated/vPairFactory/vPairFactory';
+import { vPair as vPairContract } from '../../generated/templates/vPair/vPair';
 import { Pair, Token } from '../../generated/schema';
 import { vPair } from '../../generated/templates';
 import { ZERO_BD, ZERO_BI } from '../utils/constants';
 import { newToken } from '../utils/token';
-import { BigInt, dataSource } from '@graphprotocol/graph-ts';
+import { BigInt } from '@graphprotocol/graph-ts';
 
 export function handlePairCreated(event: PairCreatedEvent): void {
     let pair = new Pair(event.params.poolAddress.toHexString());
@@ -31,10 +32,8 @@ export function handlePairCreated(event: PairCreatedEvent): void {
     pair.maxReserveRatio = event.params.maxReserveRatio;
     pair.createdAtTimestamp = event.block.timestamp;
     pair.createdAtBlockNumber = event.block.number;
-    // WARN: hardcoded value
-    pair.blocksDelay = BigInt.fromString(
-        dataSource.network().includes('arbitrum') ? '80' : '40'
-    );
+    let pairContract = vPairContract.bind(event.params.poolAddress);
+    pair.blocksDelay = pairContract.blocksDelay();
     pair.reserveRatio = ZERO_BI;
     pair.totalSupply = ZERO_BD;
     pair.totalMu = ZERO_BD;
